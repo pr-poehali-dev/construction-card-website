@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 
 type ProjectType = 'all' | 'commercial' | 'residential' | 'reconstruction';
@@ -101,6 +102,7 @@ const stats = [
 const Index = () => {
   const [activeFilter, setActiveFilter] = useState<ProjectType>('all');
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
@@ -129,10 +131,63 @@ const Index = () => {
               <a href="#projects" className="text-foreground hover:text-secondary transition-colors">Проекты</a>
               <a href="#contacts" className="text-foreground hover:text-secondary transition-colors">Контакты</a>
             </nav>
-            <Button className="hidden md:flex">
-              <Icon name="Phone" size={18} className="mr-2" />
-              +7 (495) 123-45-67
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button className="hidden md:flex">
+                <Icon name="Phone" size={18} className="mr-2" />
+                +7 (495) 123-45-67
+              </Button>
+              
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="md:hidden">
+                    <Icon name="Menu" size={24} />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px]">
+                  <nav className="flex flex-col gap-6 mt-8">
+                    <a 
+                      href="#home" 
+                      className="text-lg font-medium text-foreground hover:text-secondary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Главная
+                    </a>
+                    <a 
+                      href="#about" 
+                      className="text-lg font-medium text-foreground hover:text-secondary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      О компании
+                    </a>
+                    <a 
+                      href="#services" 
+                      className="text-lg font-medium text-foreground hover:text-secondary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Услуги
+                    </a>
+                    <a 
+                      href="#projects" 
+                      className="text-lg font-medium text-foreground hover:text-secondary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Проекты
+                    </a>
+                    <a 
+                      href="#contacts" 
+                      className="text-lg font-medium text-foreground hover:text-secondary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Контакты
+                    </a>
+                    <Button className="w-full mt-4">
+                      <Icon name="Phone" size={18} className="mr-2" />
+                      +7 (495) 123-45-67
+                    </Button>
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </header>
