@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -103,10 +103,32 @@ const Index = () => {
   const [activeFilter, setActiveFilter] = useState<ProjectType>('all');
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter(p => p.type === activeFilter);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            setVisibleCards((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [filteredProjects]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -303,8 +325,16 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
-              <Card key={project.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            {filteredProjects.map((project, index) => (
+              <Card 
+                key={project.id} 
+                ref={(el) => (cardRefs.current[index] = el)}
+                data-index={index}
+                className={`overflow-hidden hover:shadow-xl transition-all duration-500 group ${
+                  visibleCards.includes(index) ? 'animate-fade-in opacity-100' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${(index % 3) * 0.1}s` }}
+              >
                 <div className="relative h-64 overflow-hidden bg-muted">
                   <img 
                     src={project.image} 
