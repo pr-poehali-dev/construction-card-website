@@ -58,6 +58,13 @@ const projects: Project[] = [
     type: 'reconstruction',
     image: 'https://cdn.poehali.dev/projects/0de79e42-0a5a-491a-b6f1-611aa807432a/files/b0dcaaec-ad62-475f-a515-ca863b33bf98.jpg',
     description: 'Реставрация исторического здания XIX века'
+  },
+  {
+    id: 7,
+    title: 'Ростов-на-Дону 31 линия',
+    type: 'residential',
+    image: 'https://cdn.poehali.dev/files/2d91997a-5bc3-4f36-841e-2e3e2925948e.jpg',
+    description: 'Многоквартирный жилой дом в историческом районе города'
   }
 ];
 
