@@ -111,9 +111,8 @@ const Index = () => {
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Icon name="Building2" className="text-secondary" size={32} />
-              <span className="text-2xl font-bold text-primary">ООО СК "ФОКУЗ"</span>
+            <div className="flex items-center gap-3">
+              <img src="https://cdn.poehali.dev/files/26347e37-2472-4829-ace3-88415540b8ad.png" alt="ООО СК ФОКУЗ" className="h-12" />
             </div>
             <nav className="hidden md:flex gap-8">
               <a href="#home" className="text-foreground hover:text-secondary transition-colors">Главная</a>
@@ -349,9 +348,8 @@ const Index = () => {
       <footer className="bg-primary text-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-2 mb-4 md:mb-0">
-              <Icon name="Building2" size={28} />
-              <span className="text-xl font-bold">ООО СК "ФОКУЗ"</span>
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
+              <img src="https://cdn.poehali.dev/files/26347e37-2472-4829-ace3-88415540b8ad.png" alt="ООО СК ФОКУЗ" className="h-10" />
             </div>
             <p className="text-white/80">© 2024 ООО СК "ФОКУЗ". Все права защищены.</p>
           </div>
