@@ -113,7 +113,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Icon name="Building2" className="text-secondary" size={32} />
-              <span className="text-2xl font-bold text-primary">СтройПроект</span>
+              <span className="text-2xl font-bold text-primary">ООО СК "ФОКУЗ"</span>
             </div>
             <nav className="hidden md:flex gap-8">
               <a href="#home" className="text-foreground hover:text-secondary transition-colors">Главная</a>
@@ -171,7 +171,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">О компании</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              СтройПроект — это команда профессионалов с 15-летним опытом работы в строительной отрасли. 
+              ООО СК "ФОКУЗ" — это команда профессионалов с 15-летним опытом работы в строительной отрасли. 
               Мы специализируемся на комплексном строительстве коммерческих и жилых объектов, 
               реконструкции зданий и сооружений.
             </p>
@@ -351,9 +351,9 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <Icon name="Building2" size={28} />
-              <span className="text-xl font-bold">СтройПроект</span>
+              <span className="text-xl font-bold">ООО СК "ФОКУЗ"</span>
             </div>
-            <p className="text-white/80">© 2024 СтройПроект. Все права защищены.</p>
+            <p className="text-white/80">© 2024 ООО СК "ФОКУЗ". Все права защищены.</p>
           </div>
         </div>
       </footer>
