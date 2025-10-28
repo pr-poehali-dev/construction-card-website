@@ -104,6 +104,7 @@ const Index = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const filteredProjects = activeFilter === 'all' 
@@ -129,6 +130,19 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, [filteredProjects]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -449,6 +463,17 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {showScrollTop && (
+        <Button
+          onClick={scrollToTop}
+          size="icon"
+          className="fixed bottom-8 right-8 z-50 rounded-full w-12 h-12 bg-secondary hover:bg-secondary/90 shadow-lg animate-fade-in"
+          aria-label="Наверх"
+        >
+          <Icon name="ArrowUp" size={24} />
+        </Button>
+      )}
     </div>
   );
 };
