@@ -113,6 +113,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img src="https://cdn.poehali.dev/files/26347e37-2472-4829-ace3-88415540b8ad.png" alt="ООО СК ФОКУЗ" className="h-12" />
+              <span className="text-2xl font-bold text-primary">ООО СК "ФОКУЗ"</span>
             </div>
             <nav className="hidden md:flex gap-8">
               <a href="#home" className="text-foreground hover:text-secondary transition-colors">Главная</a>
@@ -350,6 +351,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-3 mb-4 md:mb-0">
               <img src="https://cdn.poehali.dev/files/26347e37-2472-4829-ace3-88415540b8ad.png" alt="ООО СК ФОКУЗ" className="h-10" />
+              <span className="text-xl font-bold">ООО СК "ФОКУЗ"</span>
             </div>
             <p className="text-white/80">© 2024 ООО СК "ФОКУЗ". Все права защищены.</p>
           </div>
